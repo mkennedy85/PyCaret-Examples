@@ -2,11 +2,11 @@
 name = "pycaret-examples"
 version = "0.1.0"
 description = "PyCaret Tutorial Collection for CMPE-255 Data Mining"
-requires-python = ">=3.11,<3.12"
+requires-python = ">=3.10,<3.12"
 
 dependencies = [
-    # Core PyCaret with extras (excluding 'models' due to CatBoost conflict on macOS)
-    "pycaret[analysis,tuner,mlops,parallel]==3.3.2",
+    # Core PyCaret with extras (excluding 'models' and 'tuner' - not available in 3.3.2)
+    "pycaret[analysis,mlops,parallel]==3.3.2",
     # Jupyter environment
     "jupyter>=1.0.0",
     "notebook>=6.5.0,<8.0.0",
@@ -68,7 +68,7 @@ advanced = [
 
 [tool.black]
 line-length = 100
-target-version = ['py311']
+target-version = ['py310']
 
 [tool.isort]
 profile = "black"

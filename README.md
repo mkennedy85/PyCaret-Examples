@@ -20,6 +20,8 @@ Five comprehensive PyCaret machine learning notebooks demonstrating AutoML capab
 
 ## 🚀 Quick Start
 
+### Local Development
+
 ```bash
 # Install uv (if not already installed)
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -37,6 +39,25 @@ chmod 600 ~/.kaggle/kaggle.json
 uv run jupyter notebook
 ```
 
+### Vertex AI Workbench
+
+```bash
+# Clone or upload this repository to your Workbench instance
+
+# Install dependencies using pip
+pip install -e .
+
+# Configure Kaggle API (for auto-download)
+# Get API token from https://www.kaggle.com/settings
+# Upload kaggle.json to Workbench, then:
+mkdir -p ~/.kaggle
+mv kaggle.json ~/.kaggle/
+chmod 600 ~/.kaggle/kaggle.json
+
+# Launch Jupyter (already installed in Workbench)
+jupyter notebook
+```
+
 Open any notebook and run all cells - datasets download automatically!
 
 ---
@@ -47,6 +68,7 @@ Open any notebook and run all cells - datasets download automatically!
 ✅ **Optimized** - Uses `fold=3` for 60-70% faster execution
 ✅ **Comprehensive** - Covers 5 major ML paradigms
 ✅ **Production-Ready** - Includes model deployment examples
+✅ **Cloud-Ready** - Works on Vertex AI Workbench or locally
 
 ---
 
@@ -182,7 +204,7 @@ Pycaret-Examples/
 │   ├── association.ipynb
 │   └── time-series-forecasting.ipynb
 ├── pyproject.toml               # Python dependencies (uv)
-├── .python-version              # Python 3.11
+├── .python-version              # Python 3.10
 └── README.md                    # This file
 ```
 
@@ -190,6 +212,7 @@ Pycaret-Examples/
 
 ## 🎯 Common Commands
 
+### Local Development
 ```bash
 # Setup
 uv sync
@@ -198,17 +221,35 @@ uv sync
 uv run jupyter notebook
 ```
 
+### Vertex AI Workbench
+```bash
+# Setup (one-time)
+pip install -e .
+
+# Run Jupyter
+jupyter notebook
+```
+
 Open any notebook in the `notebooks/` folder and run all cells!
 
 ---
 
 ## 💡 Tips
 
-1. **Start with regression.ipynb** - Most comprehensive tutorial
-2. **Read the comments** - Each notebook is heavily documented
-3. **Experiment** - Try different parameters and models
-4. **Check the outputs** - PyCaret creates beautiful visualizations
-5. **Set up Kaggle credentials** once: `~/.kaggle/kaggle.json` for auto-download
+### For Local Development
+1. **Use uv** for fast dependency installation (10-100x faster than pip)
+2. **Start with regression.ipynb** - Most comprehensive tutorial
+3. **Set up Kaggle credentials** once: `~/.kaggle/kaggle.json` for auto-download
+
+### For Vertex AI Workbench
+1. **Use pip install -e .** - Installs from pyproject.toml automatically
+2. **Upload kaggle.json** to enable auto-download of datasets
+3. **Stop your instance** when not in use to avoid charges
+
+### For All Users
+1. **Read the comments** - Each notebook is heavily documented
+2. **Experiment** - Try different parameters and models
+3. **Check the outputs** - PyCaret creates beautiful visualizations
 
 ---
 
@@ -216,6 +257,7 @@ Open any notebook in the `notebooks/` folder and run all cells!
 
 - **PyCaret Docs:** https://pycaret.readthedocs.io
 - **PyCaret GitHub:** https://github.com/pycaret/pycaret
+- **Vertex AI Workbench:** https://cloud.google.com/vertex-ai/docs/workbench
 - **uv Package Manager:** https://github.com/astral-sh/uv
 - **Kaggle API:** https://github.com/Kaggle/kaggle-api
 
@@ -225,7 +267,7 @@ Open any notebook in the `notebooks/` folder and run all cells!
 
 **Course:** CMPE-255 Data Mining
 **Institution:** San José State University
-**Platform:** Python 3.11, PyCaret 3.3.2
+**Platform:** Python 3.10/3.11, PyCaret 3.3.2
 
 These notebooks demonstrate modern AutoML workflows using PyCaret's low-code approach, covering the full spectrum of machine learning tasks from supervised learning to time series forecasting.
 

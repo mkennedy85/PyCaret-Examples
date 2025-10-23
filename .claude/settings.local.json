@@ -17,7 +17,9 @@
       "Bash(git check-ignore:*)",
       "Bash(do echo \"=== Validating $notebook ===\")",
       "Bash(do echo \"=== $notebook ===\")",
-      "Bash(do echo \"=== $nb ===\")"
+      "Bash(do echo \"=== $nb ===\")",
+      "Bash(uv cache clean:*)",
+      "Bash(uv sync:*)"
     ],
     "deny": [],
     "ask": []
