@@ -91,3 +91,11 @@ temp/
 # uv lock (tracked for reproducibility)
 # uv.lock is committed for version consistency
 
+
+# Process IDs (from run_notebooks.sh or other background processes)
+*.pid
+run.pid
+
+# PyCaret experiment directories (created by save_experiment)
+*_experiment/
+insurance_experiment/

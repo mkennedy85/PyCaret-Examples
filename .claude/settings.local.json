@@ -26,7 +26,8 @@
       "Bash(else)",
       "Bash(fi)",
       "Bash(tree:*)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(echo:*)"
     ],
     "deny": [],
     "ask": []
