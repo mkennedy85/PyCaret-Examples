@@ -18,7 +18,10 @@ set -euo pipefail
 # =============================================================================
 
 # --- Configuration ---
-KERNEL_NAME="${KERNEL_NAME:-pycaret310}"  # Default kernel (override with env var)
+KERNEL_NAME="${KERNEL_NAME:-pycaret-py310}"  # match your registered kernel
+ENV_NAME="${ENV_NAME:-pycaret310}"           # conda env that has papermill
+NON_INTERACTIVE="${NON_INTERACTIVE:-1}"      # 1 = don't prompt
+
 NB_DIR="notebooks"
 OUT_DIR="outputs/executed_notebooks"
 LOG_DIR="logs"
@@ -41,14 +44,15 @@ PM_PARAMS=(
 )
 
 # --- Setup ---
-echo "========================================"
-echo "PyCaret Notebooks Execution"
-echo "========================================"
-echo "Start time: $(date)"
-echo "Run ID: $TS"
-echo "Kernel: $KERNEL_NAME"
-echo "========================================"
-echo ""
+mkdir -p "$OUT_DIR" "$LOG_DIR"
+
+# Activate conda non-interactively (important when running detached)
+source /opt/conda/etc/profile.d/conda.sh
+conda activate "$ENV_NAME"
+
+# Ensure papermill is present in this env
+python -m pip install -q --upgrade pip
+python -m pip show papermill >/dev/null 2>&1 || python -m pip install -q papermill nbformat
 
 # Create output directories
 mkdir -p "$OUT_DIR" "$LOG_DIR"
@@ -60,21 +64,13 @@ if ! command -v papermill &> /dev/null; then
     exit 1
 fi
 
-# Check if Kaggle credentials exist
+# Kaggle creds check (skip prompt when NON_INTERACTIVE=1)
 if [ ! -f "$HOME/.kaggle/kaggle.json" ]; then
-    echo "⚠️  Warning: Kaggle credentials not found at ~/.kaggle/kaggle.json"
-    echo "Notebooks will fail when trying to download datasets."
-    echo ""
-    echo "To fix:"
-    echo "  1. Go to https://www.kaggle.com/settings"
-    echo "  2. Download your API token (kaggle.json)"
-    echo "  3. Run: mkdir -p ~/.kaggle && mv kaggle.json ~/.kaggle/ && chmod 600 ~/.kaggle/kaggle.json"
-    echo ""
-    read -p "Continue anyway? [y/N] " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        exit 1
-    fi
+  echo "⚠️  ~/.kaggle/kaggle.json missing."
+  if [ "$NON_INTERACTIVE" != "1" ]; then
+    read -p "Continue anyway? [y/N] " -n 1 -r; echo
+    [[ $REPLY =~ ^[Yy]$ ]] || exit 1
+  fi
 fi
 
 # --- Execute Notebooks Sequentially ---
@@ -98,7 +94,7 @@ for NB in "${NOTEBOOKS[@]}"; do
   echo "Log:    $log"
   echo ""
 
-  # Execute with papermill
+    # Execute with papermill
   if papermill "$in" "$out" -k "$KERNEL_NAME" "${PM_PARAMS[@]}" 2>&1 | tee -a "$log"; then
     echo ""
     echo "✅ Completed: $NB"
@@ -108,13 +104,18 @@ for NB in "${NOTEBOOKS[@]}"; do
     echo "❌ Failed: $NB"
     FAILED+=("$NB")
 
-    # Ask whether to continue or stop
-    echo ""
-    read -p "Continue with remaining notebooks? [y/N] " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-      echo "Execution halted at user request."
-      break
+    # Handle failure: interactive vs non-interactive
+    if [ "$NON_INTERACTIVE" = "1" ]; then
+      echo "Continuing with remaining notebooks (NON_INTERACTIVE=1)."
+      continue
+    else
+      echo ""
+      read -p "Continue with remaining notebooks? [y/N] " -n 1 -r
+      echo
+      if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Execution halted at user request."
+        break
+      fi
     fi
   fi
 done
