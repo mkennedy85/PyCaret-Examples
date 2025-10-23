@@ -1,0 +1,93 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# PyCaret Models (saved anywhere in project)
+*.pkl
+*.joblib
+*.h5
+*.model
+*_model.pkl
+*_pipeline.pkl
+*_experiment.pkl
+
+# PyCaret Generated Files
+# These are created by save_model(), save_experiment(), create_api(), etc.
+insurance_model.pkl
+kmeans_pipeline.pkl
+my_first_model.pkl
+my_experiment.pkl
+insurance_experiment.pkl
+forecast_model.pkl
+anomaly_model.pkl
+
+# API and Deployment Files (created by create_api, create_docker)
+*_api.py
+Dockerfile
+requirements.txt
+
+# PyCaret Logs (can be created in current directory)
+logs.log
+*.log
+
+# MLflow tracking (if using experiment tracking)
+mlruns/
+mlflow.db
+
+# Experiment artifacts
+experiments/
+artifacts/
+
+# macOS
+.DS_Store
+._*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Datasets (auto-downloaded from Kaggle)
+datasets/
+*.csv
+*.zip
+*.parquet
+!scripts/*.csv  # Allow CSV files in scripts if needed
+
+# Outputs directory (models, plots, etc.)
+outputs/
+
+# Videos
+videos/
+
+# Logs directory
+logs/
+
+# HTML reports (created by plot_model or profile)
+*.html
+report.html
+profile_report.html
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# uv lock (tracked for reproducibility)
+# uv.lock is committed for version consistency
+

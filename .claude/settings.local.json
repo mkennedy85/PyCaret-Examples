@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:pycaret.readthedocs.io)",
+      "Bash(for:*)",
+      "Bash(head:*)",
+      "Bash(done)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(python3:*)",
+      "Bash(/dev/null)",
+      "Bash(uv run:*)",
+      "Bash(cat:*)",
+      "Bash(uv pip:*)",
+      "Bash(.venv/bin/python3:*)",
+      "Bash(chmod:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(do echo \"=== Validating $notebook ===\")",
+      "Bash(do echo \"=== $notebook ===\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
