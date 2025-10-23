@@ -181,10 +181,6 @@ Pycaret-Examples/
 │   ├── anomaly-detection.ipynb
 │   ├── association.ipynb
 │   └── time-series-forecasting.ipynb
-├── scripts/                      # Helper scripts
-│   ├── run_all_notebooks.py     # Execute all notebooks
-│   ├── quick_test.py            # Fast validation (10 min timeout)
-│   └── optimize_notebooks.py    # Add fold=3 optimizations
 ├── pyproject.toml               # Python dependencies (uv)
 ├── .python-version              # Python 3.11
 └── README.md                    # This file
@@ -200,13 +196,9 @@ uv sync
 
 # Run Jupyter
 uv run jupyter notebook
-
-# Execute all notebooks from CLI
-uv run scripts/run_all_notebooks.py
-
-# Quick test (10 min timeout per notebook)
-uv run scripts/quick_test.py
 ```
+
+Open any notebook in the `notebooks/` folder and run all cells!
 
 ---
 
@@ -216,8 +208,7 @@ uv run scripts/quick_test.py
 2. **Read the comments** - Each notebook is heavily documented
 3. **Experiment** - Try different parameters and models
 4. **Check the outputs** - PyCaret creates beautiful visualizations
-5. **Set up Kaggle credentials** once: `~/.kaggle/kaggle.json`
-6. **Run quick_test.py** before committing notebook changes
+5. **Set up Kaggle credentials** once: `~/.kaggle/kaggle.json` for auto-download
 
 ---
 
