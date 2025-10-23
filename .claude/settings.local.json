@@ -16,7 +16,8 @@
       "Bash(chmod:*)",
       "Bash(git check-ignore:*)",
       "Bash(do echo \"=== Validating $notebook ===\")",
-      "Bash(do echo \"=== $notebook ===\")"
+      "Bash(do echo \"=== $notebook ===\")",
+      "Bash(do echo \"=== $nb ===\")"
     ],
     "deny": [],
     "ask": []
