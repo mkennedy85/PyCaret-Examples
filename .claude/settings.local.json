@@ -19,7 +19,12 @@
       "Bash(do echo \"=== $notebook ===\")",
       "Bash(do echo \"=== $nb ===\")",
       "Bash(uv cache clean:*)",
-      "Bash(uv sync:*)"
+      "Bash(uv sync:*)",
+      "Bash(do)",
+      "Bash(if grep -q \"kaggle.api.dataset_download_files\" \"$nb\")",
+      "Bash(then)",
+      "Bash(else)",
+      "Bash(fi)"
     ],
     "deny": [],
     "ask": []
