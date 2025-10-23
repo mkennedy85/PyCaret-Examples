@@ -27,7 +27,8 @@
       "Bash(fi)",
       "Bash(tree:*)",
       "Bash(bash:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(./validate_notebooks.sh:*)"
     ],
     "deny": [],
     "ask": []
