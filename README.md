@@ -10,11 +10,11 @@ Five comprehensive PyCaret machine learning notebooks demonstrating AutoML capab
 
 | Notebook | ML Task | What You'll Learn |
 |----------|---------|-------------------|
-| **regression.ipynb** | Supervised Learning | AutoML with 25+ models, hyperparameter tuning, ensembling, SHAP interpretation |
-| **clustering.ipynb** | Unsupervised Learning | K-Means, DBSCAN, elbow method, customer segmentation |
-| **anomaly-detection.ipynb** | Anomaly Detection | Isolation Forest, outlier detection, fraud detection |
-| **association.ipynb** | Association Rules | Market basket analysis, Apriori algorithm, product recommendations |
-| **time-series-forecasting.ipynb** | Time Series | ARIMA, Prophet, seasonal decomposition, forecasting |
+| **01_regression.ipynb** | Supervised Learning | AutoML with 25+ models, hyperparameter tuning, ensembling, SHAP interpretation |
+| **02_clustering.ipynb** | Unsupervised Learning | K-Means, DBSCAN, elbow method, customer segmentation |
+| **03_anomaly-detection.ipynb** | Anomaly Detection | Isolation Forest, outlier detection, fraud detection |
+| **04_association.ipynb** | Association Rules | Market basket analysis, Apriori algorithm, product recommendations |
+| **05_time-series-forecasting.ipynb** | Time Series | ARIMA, Prophet, seasonal decomposition, forecasting |
 
 ---
 
@@ -74,7 +74,7 @@ Open any notebook and run all cells - datasets download automatically!
 
 ## 📖 What Each Notebook Demonstrates
 
-### 1. regression.ipynb
+### 1. 01_regression.ipynb
 **Dataset:** California Housing Prices (20,640 samples)
 
 - ✅ AutoML: Compare 25+ regression models automatically
@@ -92,7 +92,7 @@ tuned = tune_model(best)
 save_model(best, 'model')
 ```
 
-### 2. clustering.ipynb
+### 2. 02_clustering.ipynb
 **Dataset:** Jewellery Customer Data
 
 - ✅ K-Means, DBSCAN, hierarchical clustering
@@ -110,7 +110,7 @@ plot_model(kmeans, plot='elbow')
 results = assign_model(kmeans)
 ```
 
-### 3. anomaly-detection.ipynb
+### 3. 03_anomaly-detection.ipynb
 **Dataset:** Credit Card Fraud (284,807 transactions)
 
 - ✅ Isolation Forest algorithm
@@ -127,7 +127,7 @@ iforest = create_model('iforest')
 results = assign_model(iforest)
 ```
 
-### 4. association.ipynb
+### 4. 04_association.ipynb
 **Dataset:** Groceries Market Basket
 
 - ✅ Market basket analysis
@@ -144,7 +144,7 @@ frequent_itemsets = apriori(basket, min_support=0.01, use_colnames=True)
 rules = association_rules(frequent_itemsets, metric="lift", min_threshold=1)
 ```
 
-### 5. time-series-forecasting.ipynb
+### 5. 05_time-series-forecasting.ipynb
 **Dataset:** Hourly Energy Consumption
 
 - ✅ ARIMA, Prophet, exponential smoothing
@@ -198,11 +198,12 @@ All datasets download automatically from Kaggle when you run the notebooks:
 ```
 Pycaret-Examples/
 ├── notebooks/                    # 5 PyCaret notebooks
-│   ├── regression.ipynb
-│   ├── clustering.ipynb
-│   ├── anomaly-detection.ipynb
-│   ├── association.ipynb
-│   └── time-series-forecasting.ipynb
+│   ├── 01_regression.ipynb
+│   ├── 02_clustering.ipynb
+│   ├── 03_anomaly-detection.ipynb
+│   ├── 04_association.ipynb
+│   └── 05_time-series-forecasting.ipynb
+├── run_notebooks.sh             # Batch execution script (papermill)
 ├── pyproject.toml               # Python dependencies (uv)
 ├── .python-version              # Python 3.10
 └── README.md                    # This file
@@ -219,18 +220,71 @@ uv sync
 
 # Run Jupyter
 uv run jupyter notebook
+
+# Run all notebooks with papermill (batch execution)
+./run_notebooks.sh
 ```
 
 ### Vertex AI Workbench
 ```bash
 # Setup (one-time)
 pip install -e .
+pip install papermill  # For batch execution
 
 # Run Jupyter
 jupyter notebook
+
+# Run all notebooks with papermill (batch execution)
+./run_notebooks.sh
 ```
 
 Open any notebook in the `notebooks/` folder and run all cells!
+
+---
+
+## 🔄 Batch Execution with Papermill
+
+You can execute all 5 notebooks sequentially using the included `run_notebooks.sh` script:
+
+```bash
+# Install papermill first
+pip install papermill  # or: uv pip install papermill
+
+# Run all notebooks
+./run_notebooks.sh
+```
+
+**What the script does:**
+- Executes notebooks in order: 01 → 02 → 03 → 04 → 05
+- Saves executed notebooks to `outputs/executed_notebooks/`
+- Creates detailed logs in `logs/`
+- Checks for Kaggle credentials before starting
+- Allows continuing on errors (prompts user)
+- Provides detailed progress and summary
+
+**Customization:**
+```bash
+# Use a specific kernel (default is pycaret310)
+KERNEL_NAME="my-kernel" ./run_notebooks.sh
+
+# Or edit the script to change:
+# - Output directories
+# - Notebook order
+# - Parameters passed to notebooks
+```
+
+**Output structure:**
+```
+outputs/executed_notebooks/
+├── 01_regression_executed_20251022-184530.ipynb
+├── 02_clustering_executed_20251022-184530.ipynb
+├── ...
+
+logs/
+├── 01_regression_20251022-184530.log
+├── 02_clustering_20251022-184530.log
+├── ...
+```
 
 ---
 
@@ -238,8 +292,9 @@ Open any notebook in the `notebooks/` folder and run all cells!
 
 ### For Local Development
 1. **Use uv** for fast dependency installation (10-100x faster than pip)
-2. **Start with regression.ipynb** - Most comprehensive tutorial
+2. **Start with 01_regression.ipynb** - Most comprehensive tutorial
 3. **Set up Kaggle credentials** once: `~/.kaggle/kaggle.json` for auto-download
+4. **Use run_notebooks.sh** for automated batch execution of all 5 notebooks
 
 ### For Vertex AI Workbench
 1. **Use pip install -e .** - Installs from pyproject.toml automatically

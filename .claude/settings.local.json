@@ -24,7 +24,9 @@
       "Bash(if grep -q \"kaggle.api.dataset_download_files\" \"$nb\")",
       "Bash(then)",
       "Bash(else)",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(tree:*)",
+      "Bash(bash:*)"
     ],
     "deny": [],
     "ask": []
