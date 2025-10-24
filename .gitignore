@@ -72,9 +72,6 @@ datasets/
 # Outputs directory (models, plots, etc.)
 outputs/
 
-# Videos
-videos/
-
 # Logs directory
 logs/
 
