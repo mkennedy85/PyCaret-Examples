@@ -96,23 +96,23 @@ Watch 1-minute overviews of each notebook:
 
 ### 1. Regression - California Housing Prices
 
-https://github.com/user-attachments/assets/01_regression.mp4
+https://github.com/mkennedy85/PyCaret-Examples/raw/main/videos/01_regression.mp4
 
 ### 2. Clustering - Customer Segmentation
 
-https://github.com/user-attachments/assets/02_clustering.mp4
+https://github.com/mkennedy85/PyCaret-Examples/raw/main/videos/02_clustering.mp4
 
 ### 3. Anomaly Detection - Credit Card Fraud
 
-https://github.com/user-attachments/assets/03_anomaly_detection.mp4
+https://github.com/mkennedy85/PyCaret-Examples/raw/main/videos/03_anomaly_detection.mp4
 
 ### 4. Association Rules - Market Basket Analysis
 
-https://github.com/user-attachments/assets/04_association.mp4
+https://github.com/mkennedy85/PyCaret-Examples/raw/main/videos/04_association.mp4
 
 ### 5. Time Series - Energy Forecasting
 
-https://github.com/user-attachments/assets/05_time_forecasting.mp4
+https://github.com/mkennedy85/PyCaret-Examples/raw/main/videos/05_time_forecasting.mp4
 
 ---
 
