@@ -1,8 +1,26 @@
 # PyCaret Tutorials - 5 End-to-End ML Notebooks
 
-Five comprehensive PyCaret machine learning notebooks demonstrating AutoML capabilities.
+> **✨ 5 Complete PyCaret Examples**
+> Fully executed notebooks with outputs demonstrating AutoML across 5 machine learning paradigms.
+> See [executed notebooks](./executed_notebooks/) for complete results with visualizations.
+
+Five comprehensive PyCaret machine learning notebooks demonstrating AutoML capabilities across regression, clustering, anomaly detection, association rules, and time series forecasting.
 
 **Course:** CMPE-255 Data Mining | **Institution:** San José State University
+
+---
+
+## 📊 Available Examples
+
+| Example | ML Paradigm | Status | Highlights |
+|---------|-------------|--------|------------|
+| **01_regression** | Supervised Learning | ✅ With outputs | AutoML comparison, model tuning, deployment |
+| **02_clustering** | Unsupervised Learning | ✅ With outputs | Customer segmentation, elbow method, 3D plots |
+| **03_anomaly-detection** | Outlier Detection | ✅ With outputs | Fraud detection, 3 algorithms, evaluation |
+| **04_association** | Market Basket | ✅ With outputs | Apriori rules, lift analysis, visualizations |
+| **05_time-series-forecasting** | Time Series | ✅ With outputs | Energy forecasting, model comparison |
+
+**📁 View Results:** All executed notebooks with full outputs and visualizations are in [`executed_notebooks/`](./executed_notebooks/)
 
 ---
 
